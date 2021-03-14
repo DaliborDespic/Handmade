@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&display=swap');
+
+// variables
+$black: #000;
+$orange: #ff8a0e;
+$gray: #404040;
+$lightgray: #f3f3f3;
+$white: #fff;
+$padding: 70px 0;
+$transition: 0.5s ease;
+
+// basic styles
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var($gray);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    @media(max-width: 767px) {
+        width: 90%;
+    }
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $gray;
+}
+
+hr {
+    border: none;
+    background: $orange;
+    height: 2px;
+    width: 100px;
+    margin: 20px auto;
+}
+
+// mixins
+@mixin btn {
+    background: $orange;
+    border: none;
+    color: $white;
+    padding: 10px 40px;
+    margin: 20px 0 40px;
+    text-transform: uppercase;
+    transition: $transition;
+    cursor: pointer;
+    &:hover {
+        background: $gray;
+    }
+}
+
+@mixin flex($justify, $align, $direction) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+// header
+
+header {
+    background-image: url(./img/header.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 60vh;
+    border-bottom: 20px solid rgba($black, 0.5);
+    h1 {
+        color: $white;
+        font-size: 2.5rem;
+        background: $black;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        margin-top: 150px;
+        display: inline-block;
+        @media(max-width: 767px) {
+            font-size: 2rem;
+            padding: 5px 10px;
+            margin-top: 200px;
+        }
+    }
+
+    ul {
+        @include flex(flex-start, center, row);
+        li {
+            color: $white;
+            background: $orange;
+            padding: 5px 30px;
+            @media(max-width: 767px) {
+                padding: 5px 8px;
+            }
+        }
+
+        a {
+            color: $white;
+            cursor: pointer;
+            transition: $transition;
+
+            &:hover {
+                color: $black;
+            }
+        }
+    }
+}
+
+// about
+.about {
+    background: $lightgray;
+    padding: $padding;
+    text-align: center;
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+}
+
+// bolg
+.blog {
+    text-align: center;
+    h2 {
+        font-weight: 700;
+    }
+    .row {
+        @include flex(space-between, center, row);
+        div {
+            flex: 0 0 30%;
+            @media(max-width: 767px) {
+                flex: 100%;
+            }
+            button {
+                @include btn;
+            }  
+            h3 {
+                font-weight: 700;
+                margin-bottom: 20px;
+            } 
+        }
+    }
+}
+
+// myworks
+.myworks {
+    text-align: center;
+    background: $lightgray;
+    padding: $padding;
+    .row {
+        @include flex(space-between, center, row);
+        div {
+            flex: 0 0 24%;
+            @media(max-width: 767px) {
+                flex: 100%;
+            }
+            button {
+                @include btn;
+            }  
+            img {
+                width: 100%;
+                margin-top: 20px;
+            } 
+            h3 {
+                margin: 20px 0;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+// footer
+footer {
+    background: $gray;
+    text-align: center;
+    padding: $padding;
+    p {
+        color: $white;
+        span {
+            color: red;
+        }
+    }
+    i {
+        color: $orange;
+        font-size: 2rem;
+        padding: 10px 20px;
+        transition: $transition;
+        &:hover {
+            color: $lightgray;
+        }
+    }
+}
